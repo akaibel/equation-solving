@@ -25,7 +25,8 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 	  		let sidesOfEquation = equation.split("=");
 	  		let equationEqualsZero = sidesOfEquation[0]+"-("+sidesOfEquation[1]+")";
 	  		let node = math.compile(equationEqualsZero);
-	  		let result1, result2;
+	  		let result1 = null;
+			let result2;
 	  		let scope = {};
 	  		if(isNaN(start) || isNaN(end)){
 	  			alert("Der Bereich muss durch Zahlen angegeben werden!");
@@ -48,8 +49,11 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 		  		try{
 		  			scope[variable] = i;
 		  			result2 = node.evaluate(scope);
-		  			if(Math.abs(result2 > 1000*step)) continue;
-		  			if(result1*result2<=0){
+		  			if(Math.abs(result2) > 1000*step || result2 === Infinity || result2 == -Infinity) {
+						result1 = null;
+						continue;
+					} 
+		  			if(result1 !== null && result1*result2<=0){
 		  				iMinusStep = i-step;
 		  				//alert(i+"; "+iMinusStep);
 		  				let approxSolution = sliceInterval(node,variable,iMinusStep,i);
