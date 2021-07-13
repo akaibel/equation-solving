@@ -43,12 +43,10 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 </head>
 
 <body>
-<div  style="text-align: center;">
-    <h1>
-      L&ouml;se die Gleichung Schritt f&uuml;r Schritt!
-    </h1>
-    <p><i>Die Gleichung hat <b><span  id="numberOfSolutions">2</span></b> L&ouml;sung(en).</i></p>
-</div>
+<h1>
+  L&ouml;se die Gleichung Schritt f&uuml;r Schritt!
+</h1>
+<p><i>Die Gleichung hat <b><span  id="numberOfSolutions">2</span></b> L&ouml;sung(en).</i></p>
 <table id="mainTable">
   <tr id="rowSeparatingTaskAndCalculation">
   	<td colspan=5></td>
@@ -99,9 +97,7 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 
 <br/><br/>
 <form action="index.html">
-	<div style="text-align: center;">
-		<button type="submit">neue Gleichung eingeben</button>
-	</div>
+	<button type="submit">neue Gleichung eingeben</button>
 </form>
 
 <script>
