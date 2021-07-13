@@ -34,8 +34,8 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
   <script src="https://unpkg.com/mathjs@8.1.0/lib/browser/math.js"></script>
   <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <script src="include_math/solve.js"></script> 
-  <script src="include_math/display.js"></script> 
+  <script src="scripts/solve.js"></script> 
+  <script src="scripts/display.js"></script> 
 </head>
 
 <body>
