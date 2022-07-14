@@ -14,6 +14,11 @@ For a copy of the GNU General Public License see <http://www.gnu.org/licenses/>.
 Get source-code at GitHub: https://github.com/akaibel/equation-solving
 */
 
+	// the number of operations is counted; if operations is too great
+	// then the script is stopped to avoid a permanent lag of the page
+	// e.g. for functions as sin(x)/x
+	var operations;
+	var maxOperations = 1000000;
 
     /*
     	finds solutions for an equation of variable in the interval [start,end]
@@ -21,7 +26,8 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
         if there is an error, then null is returned.
     */
   	function findSolutionsInInterval(equation,variable,start,end){
-	  		let allSolutions = [];
+	  		operations = 0;
+			let allSolutions = [];
 	  		let sidesOfEquation = equation.split("=");
 	  		let equationEqualsZero = sidesOfEquation[0]+"-("+sidesOfEquation[1]+")";
 	  		let node;
@@ -54,6 +60,11 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 	  		let step = (end-start)/4000;
 	  		let x;
 	  		for(x=start; x<end;x+=step){
+				operations += 1;
+				if(operations >= maxOperations){
+					alert ("Bereich zu gross gewaehlt!\nEs koennen nicht alle Loesungen gefunden werden.");
+					return allSolutions;
+				}
 		  		try{
 		  			scope[variable] = x;
 		  			result = node.evaluate(scope);
@@ -103,7 +114,7 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 		let stepCurrent = step;
 		let result,resultNext;
   		let scope = {};
-		let xMax;
+		let xMax = xStart +stepCurrent;
 		let x;
 		for(iteration=0; iteration<10;iteration++){
   			x = xStart;
@@ -113,6 +124,11 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
   				scope[variable] = x+stepCurrent;
   				resultNext = node.evaluate(scope);
 				x += stepCurrent; 						
+				operations += 1;
+				if(operations >= maxOperations){
+					alert ("Bereich zu gross gewaehlt!\nEs koennen nicht alle Loesungen gefunden werden.");
+					return [null,xMax];
+				}
 			}
 			while(result * resultNext > 0 && Math.abs(resultNext) <= Math.abs(result) && x<end);
 			if(iteration == 0){
@@ -142,6 +158,13 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
   		let scope = {};
   		let i;
   		for(i=0; i<30; i++){
+
+			operations += 1;
+			if(operations >= maxOperations){
+				alert ("Bereich zu gross gewaehlt!\nEs koennen nicht alle Loesungen gefunden werden.");
+				return null;
+			}
+
   			middle = (left+right)/2;
   			scope[variable] = left;
   			resultLeft = node.evaluate(scope);
@@ -237,5 +260,3 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 	  result = result.replace(/;/g,",");
 	  return result;
   }
-  
-  	
