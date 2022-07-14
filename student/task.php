@@ -89,7 +89,7 @@ else{
         $letterToLowerCase = strtolower($letter);
         echo "<input type='image' src='../images/let$letter.png' onclick='insertLetter("."\"$letterToLowerCase\""."); return false'/>\n";
         $counter++;
-        if($counter%13 == 0){
+        if($counter%9 == 0){
             echo "<br/>";
         }    
     }
