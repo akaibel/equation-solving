@@ -3,7 +3,7 @@
         $variableToUpperCase = strtoupper($variable);
         
 ?>
-		<div style="min-width:500px">
+		<div style="min-width:560px">
 			<input type="image" src="../images/num0.png" onclick="buttonNum(0);return false"/>
 			<input type="image" src="../images/num1.png" onclick="buttonNum(1);return false"/>
 			<input type="image" src="../images/num2.png" onclick="buttonNum(2);return false"/>
