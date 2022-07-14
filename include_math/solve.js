@@ -18,7 +18,7 @@ Get source-code at GitHub: https://github.com/akaibel/equation-solving
 	// then the script is stopped to avoid a permanent lag of the page
 	// e.g. for functions as sin(x)/x
 	var operations;
-	var maxOperations = 1000000;
+	var maxOperations = 100000;
 
     /*
     	finds solutions for an equation of variable in the interval [start,end]
